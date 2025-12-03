@@ -62,6 +62,12 @@ class CampusLista(GerenciadorLista):
         super().__init__()
         self.nome = nome
 
+    def cadastrar(self, item):
+        """Sobrescreve o método para validar se o item é um Curso."""
+        if not isinstance(item, Curso):
+            raise TypeError(f"CampusLista só aceita objetos do tipo Curso. Recebido: {type(item).__name__}")
+        super().cadastrar(item)
+
     def cadastrar_curso(self, nome: str, carga_horaria: int):
         curso = Curso(0, nome, carga_horaria)
         self.cadastrar(curso)
@@ -70,14 +76,19 @@ class CampusLista(GerenciadorLista):
         self.listar()
 
     def procurar_curso(self, codigo: int):
-        return self.buscar(codigo)
+        curso = self.buscar(codigo)
+        if curso and not isinstance(curso, Curso):
+            raise TypeError(f"Esperado Curso, mas encontrado: {type(curso).__name__}")
+        return curso
 
     def atualizar_curso(self, codigo: int, novo_nome=None, nova_ch=None):
-        self.atualizar(
-            codigo,
-            nome=novo_nome if novo_nome else None,
-            carga_horaria=nova_ch if nova_ch else None
-        )
+        curso = self.procurar_curso(codigo)
+        if curso and isinstance(curso, Curso):
+            self.atualizar(
+                codigo,
+                nome=novo_nome if novo_nome else None,
+                carga_horaria=nova_ch if nova_ch else None
+            )
 
     def remover_curso(self, codigo: int):
         self.remover(codigo)

@@ -2,6 +2,8 @@
 Atividade da disciplina Programação Orientada a Objetos  
 Curso: Análise e Desenvolvimento de Sistemas — Universidade Federal do Ceará (UFC)
 
+**Código Refinado pela Inteligência Artificial: Claude IA - Sonnet 4.5**
+
 ## Introdução
 Este projeto tem como objetivo demonstrar, de forma prática, a aplicação do princípio de herança dentro da Programação Orientada a Objetos (POO).  
 A atividade consiste em implementar um sistema simples de gerenciamento de Campi e Cursos da UFC, inicialmente estruturado com classes independentes e posteriormente refatorado para incluir generalização e especialização entre classes.

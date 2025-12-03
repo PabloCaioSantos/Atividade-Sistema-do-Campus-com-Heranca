@@ -7,3 +7,11 @@ Exporta todas as classes do pacote.
 
 from .curso import Curso, EntidadeAcademica
 from .campus_lista import CampusLista, GerenciadorLista
+
+# Define explicitamente o que é exportado
+__all__ = [
+    'Curso',
+    'EntidadeAcademica',
+    'CampusLista',
+    'GerenciadorLista'
+]
